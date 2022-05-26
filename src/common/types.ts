@@ -133,3 +133,10 @@ export interface UsersReposInterface {
   watchers: number;
   watchers_count: number;
 }
+
+
+// Posts page
+export interface PostInterface {
+  id: string,
+  title: string
+}

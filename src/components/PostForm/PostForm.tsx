@@ -1,17 +1,26 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import React, {ChangeEvent, FC, FormEvent, useState} from 'react';
 import './PostForm.scss';
+import {connect} from 'react-redux';
+import {createPostAC} from '../../store/action-creators';
+import {PostInterface} from '../../common/types';
 
-const PostForm = () => {
+interface PostFormPropsInterface {
+  createPostAC: any; // createPostAC interface ??
+}
+
+const PostForm: FC<PostFormPropsInterface> = ({createPostAC}) => {
   const [title, setTitle] = useState<string>('');
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const newPost = {
+    const newPost: PostInterface = {
       title: title,
       id: Date.now().toString()
     }
     console.log('newPost', newPost);
+
+    createPostAC(newPost)
 
     setTitle('');
   }
@@ -38,4 +47,8 @@ const PostForm = () => {
   )
 }
 
-export default PostForm
+const mapDispatchToProps = {
+  createPostAC: createPostAC
+}
+
+export default connect(null, mapDispatchToProps)(PostForm)

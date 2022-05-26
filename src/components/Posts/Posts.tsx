@@ -1,20 +1,31 @@
 import React, {FC} from 'react';
+import {connect} from 'react-redux'; // для доступа к store
 import './Posts.scss';
 import Post from '../Post/Post';
+import {PostsReducerStateInterface} from '../../store/reducers/postsReducer';
+import {GlobalStateInterface} from '../../store/reducers/rootReducer';
+import {PostInterface} from '../../common/types';
 
 interface PostPropsInterface {
-  posts: Array<any>
+  syncPosts: PostInterface[]
 }
 
-const Posts: FC<PostPropsInterface> = ({posts}) => {
-  if (!posts.length) {
+const Posts: FC<PostPropsInterface> = ({syncPosts}) => {
+  if (!syncPosts.length) {
     return <div className="text-center">Постов нет</div>
   }
   return (
     <div>
-      {posts.map((post) => <Post key={post} post={post}/>)}
+      {syncPosts.map((post: any) => <Post key={post} post={post}/>)}
     </div>
   )
 }
 
-export default Posts
+const mapStateToProps = (state: GlobalStateInterface, ownProps: PostPropsInterface) => {
+  console.log('state', state)
+  return {
+    syncPosts: state.posts.posts // получаем из Store посты, которые будут доступны по переменной syncPosts
+  }
+}
+
+export default connect(mapStateToProps, null)(Posts)

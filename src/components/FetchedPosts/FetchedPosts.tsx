@@ -2,9 +2,10 @@ import React, {FC, useContext} from 'react';
 import './FetchedPosts.scss';
 import Post from '../Post/Post';
 import {ThemeContext} from '../../App';
+import {PostInterface} from '../../common/types';
 
 interface FetchedPostsPropsInterface {
-  posts: Array<any>
+  posts: Array<PostInterface>
 }
 
 const FetchedPosts: FC<FetchedPostsPropsInterface> = ({posts}) => {
@@ -20,7 +21,7 @@ const FetchedPosts: FC<FetchedPostsPropsInterface> = ({posts}) => {
   }
   return (
     <div>
-      {posts.map((post) => <Post key={post} post={post}/>)}
+      {posts.map((post) => <Post key={post.id} post={post}/>)}
     </div>
   )
 }
