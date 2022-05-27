@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FC, FormEvent, useState} from 'react';
 import './PostForm.scss';
 import {connect} from 'react-redux';
-import {createPostAC} from '../../store/action-creators';
+import {createPostAC} from '../../store/action-creators/post';
 import {PostInterface} from '../../common/types';
 
 interface PostFormPropsInterface {

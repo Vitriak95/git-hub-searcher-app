@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import './UserDetailsPage.scss';
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {BaseApiUrl} from '../../common/variables';
 import {UserDetailsInterface, UsersReposInterface} from '../../common/types';
 import {convertIsoStringToDate} from '../../common/utils';
