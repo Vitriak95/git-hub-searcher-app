@@ -1,1 +1,1 @@
-export const BaseApiUrl = 'https://api.github.com';
+export const baseApiUrl = 'https://api.github.com';

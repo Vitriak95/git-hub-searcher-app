@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import './UserDetailsPage.scss';
 import {useParams} from 'react-router-dom';
-import {BaseApiUrl} from '../../common/variables';
+import {baseApiUrl} from '../../common/variables';
 import {UserDetailsInterface, UsersReposInterface} from '../../common/types';
 import {convertIsoStringToDate} from '../../common/utils';
 import {Input} from '../../components/Input/Input';
@@ -34,7 +34,7 @@ export const UserDetailsPage = () => {
   }, [])
 
   const fetchUserDataByName = (userName: string) => {
-    fetch(`${BaseApiUrl}/users/${userName}`)
+    fetch(`${baseApiUrl}/users/${userName}`)
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -52,7 +52,7 @@ export const UserDetailsPage = () => {
   }
 
   const fetchUserRepos = (userName: string) => {
-    fetch(`${BaseApiUrl}/users/${userName}/repos?per_page=100`)
+    fetch(`${baseApiUrl}/users/${userName}/repos?per_page=100`)
       .then((res) => {
         if (res.ok) {
           return res.json();

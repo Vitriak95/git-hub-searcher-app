@@ -1,4 +1,4 @@
-import React, {ChangeEvent, ChangeEventHandler, FC} from 'react';
+import React, {ChangeEventHandler, FC} from 'react';
 import './Input.scss';
 import classNames from 'classnames';
 
@@ -11,7 +11,7 @@ interface InputPropsInterface {
 }
 
 export const Input: FC<InputPropsInterface> = ({id, className, label, error, onChange}) => {
-  const classes = classNames('input', className, error);
+  const classes = classNames('input form-control', className, error);
 
   return (
     <div className="input-wrapper">

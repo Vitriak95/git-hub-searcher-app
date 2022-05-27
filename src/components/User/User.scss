@@ -1,0 +1,24 @@
+.user-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0;
+
+  .avatar {
+    margin-right: 24px;
+
+    img {
+      width: 200px;
+    }
+  }
+
+  .login-user {
+    font-size: 24px;
+    text-transform: capitalize;
+  }
+
+  .repos {
+    width: 200px;
+    max-width: 100%;
+  }
+}
