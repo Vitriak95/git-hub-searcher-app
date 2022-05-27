@@ -35,7 +35,7 @@ export const HomePage: FC = () => {
       {loading && <div>Loading...</div>}
       {error && <div className="error">{error}</div>}
 
-      {usersData?.data && usersData?.data.filter(filterUsers).map((user: UserInterface) => {
+      {usersData && usersData.filter(filterUsers).map((user: UserInterface) => {
         return <User key={user.id} user={user} />
       })}
     </div>

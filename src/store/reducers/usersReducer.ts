@@ -1,11 +1,9 @@
 import {UsersAction} from '../actions/usersActions';
 import {UsersActionTypes} from '../action-types/usersActionTypes';
 import {UserInterface} from '../../common/types';
-import {FetchUsersDataResponseInterface} from '../types/users';
-import {AxiosResponse} from 'axios';
 
 export interface UsersStateInterface {
-  data: AxiosResponse<FetchUsersDataResponseInterface> | null;
+  data: UserInterface[] | null;
   loading: boolean;
   error: null | any;
 }
