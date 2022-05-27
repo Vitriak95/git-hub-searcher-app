@@ -16,7 +16,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={ <HomePage />} />
-            <Route path="/posts" element={ <PostPage />} />
+            {/*<Route path="/posts" element={ <PostPage />} />*/}  {/*от минина по redux на ютуб*/}
             <Route path="/user/:user" element={ <UserDetailsPage />}/>
           </Routes>
         </BrowserRouter>

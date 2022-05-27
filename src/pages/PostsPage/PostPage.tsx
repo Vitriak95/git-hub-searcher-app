@@ -16,7 +16,7 @@ export const PostPage = () => {
         <div className="two-column">
           <div className="column">
             <h2>Синхронные посты</h2>
-            <Posts />
+            <Posts syncPosts={[]} />
           </div>
           <div className="column">
             <h2>Асинхронные посты</h2>
