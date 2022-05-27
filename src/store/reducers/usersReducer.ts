@@ -19,7 +19,8 @@ export const usersReducer = (state = initialState, action: UsersAction) => {
     case UsersActionTypes.FETCH_USERS:
       return {
         ...state,
-        loading: true
+        loading: true,
+        data: null
       }
     case UsersActionTypes.FETCH_USERS_SUCCESS:
       return {

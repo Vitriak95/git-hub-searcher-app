@@ -2,7 +2,6 @@ import {ProfileUserActionTypes} from '../action-types/profileUserActionTypes';
 
 export interface FetchProfileUserAction {
   type: ProfileUserActionTypes.FETCH_PROFILE_USER;
-
 }
 
 export interface FetchProfileUserSuccessAction {
@@ -15,7 +14,4 @@ export interface FetchProfileUserFailureAction {
   payload: string;
 }
 
-export type ProfileUserAction =
-  FetchProfileUserAction
-  | FetchProfileUserSuccessAction
-  | FetchProfileUserFailureAction;
+export type ProfileUserAction = FetchProfileUserAction | FetchProfileUserSuccessAction | FetchProfileUserFailureAction;

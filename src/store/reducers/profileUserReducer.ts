@@ -1,9 +1,8 @@
-import {AxiosResponse} from 'axios';
 import {ProfileUserAction} from '../actions/profileUserActions';
 import {ProfileUserActionTypes} from '../action-types/profileUserActionTypes';
 
 export interface ProfileUserStateInterface {
-  data: AxiosResponse<any> | null; // TODO remove any
+  data: any | null; // TODO remove any
   loading: boolean;
   error: null | any;
 }
@@ -19,7 +18,8 @@ export const profileUserReducer = (state: ProfileUserStateInterface = initialSta
     case ProfileUserActionTypes.FETCH_PROFILE_USER:
       return {
         ...state,
-        loading: true
+        loading: true,
+        data: null
       }
     case ProfileUserActionTypes.FETCH_PROFILE_USER_SUCCESS:
       return {
