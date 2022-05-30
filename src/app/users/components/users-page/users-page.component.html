@@ -1,0 +1,10 @@
+<p>home-page works!</p>
+
+<div>isLoading: {{isLoading$ | async}}</div>
+
+<div *ngIf="usersData$ | async">
+  <div *ngFor="let user of (usersData$ | async)">
+    <div>{{user.id}} - {{user.login}}</div>
+  </div>
+</div>
+
