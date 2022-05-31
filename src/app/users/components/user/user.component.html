@@ -1,0 +1,10 @@
+<div class="user-item">
+  <div class="avatar">
+    <img [src]="userProps.avatar_url" [alt]="userProps.login" />
+  </div>
+  <div class="login-user">
+    <a [routerLink]="['/user', userProps.login]">{{userProps.login}}</a>
+<!--    <Link to={`/user/${user.login}`}>{user.login}</Link>-->
+  </div>
+  <div class="repos">Repos: ##</div>
+</div>

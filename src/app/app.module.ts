@@ -9,6 +9,8 @@ import {environment} from '../environments/environment';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {HttpClientModule} from '@angular/common/http';
+import { HeaderComponent } from './shared/components/header/header.component';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {HttpClientModule} from '@angular/common/http';
       logOnly: environment.production, // Restrict extension to log-only mode
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

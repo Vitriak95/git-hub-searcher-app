@@ -1,10 +1,19 @@
-<p>home-page works!</p>
+<div class="users-page container">
+<!--  <Input-->
+<!--    id="searchAuthor"-->
+<!--    label="Search for users"-->
+<!--    onChange={handleInput}-->
+<!--  />-->
+  <app-search
+    id="userSearch"
+    label="Search user"
+    (searchHandler)="onChangeSearchInput($event)"
+  ></app-search>
 
-<div>isLoading: {{isLoading$ | async}}</div>
+  <div *ngIf="isLoading$ | async">Loading...</div>
+  <div class="error" *ngIf="error$ | async">{{error$ | async}}</div>
 
-<div *ngIf="usersData$ | async">
-  <div *ngFor="let user of (usersData$ | async)">
-    <div>{{user.id}} - {{user.login}}</div>
-  </div>
+  <ng-container *ngFor="let user of filterUsers(usersData)">
+    <app-user [user]="user"></app-user>
+  </ng-container>
 </div>
-

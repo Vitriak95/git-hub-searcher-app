@@ -1,0 +1,16 @@
+<div class="input-wrapper">
+  <label *ngIf="labelProps" class="input-label" [for]="idProps">{{labelProps}}</label>
+<!--  {/*{required && <span className="input-required">Required</span>}*/}-->
+  <input
+    [name]="idProps ? idProps : 'search'"
+    [id]="idProps ? idProps : 'search'"
+    type="text"
+    placeholder="Search"
+    class="input form-control"
+    (input)="handlerInput($event)"
+  />
+
+<!--  {error && <div className="input-error">-->
+<!--  {error}-->
+<!--  </div>}-->
+</div>

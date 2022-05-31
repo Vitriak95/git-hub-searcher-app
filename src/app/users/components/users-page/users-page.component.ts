@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {fetchUsersAction} from '../../store/actions/fetchUsers.action';
-import {Observable} from 'rxjs';
-import {isLoadingUsersSelector, usersDataSelector} from '../../store/selectors';
+import {Observable, Subscription} from 'rxjs';
+import {isErrorUsersSelector, isLoadingUsersSelector, usersDataSelector} from '../../store/selectors';
 import {UserInterface} from '../../../shared/types/user.interface';
 
 @Component({
@@ -10,9 +10,15 @@ import {UserInterface} from '../../../shared/types/user.interface';
   templateUrl: './users-page.component.html',
   styleUrls: ['./users-page.component.scss']
 })
-export class UsersPageComponent implements OnInit {
+export class UsersPageComponent implements OnInit, OnDestroy {
   isLoading$: Observable<boolean> | undefined;
-  usersData$: Observable<UserInterface[]> | undefined;
+  error$: Observable<string | null>;
+  // usersData$: Observable<UserInterface[]> | undefined;
+
+  usersDataSubscription$: Subscription;
+  usersData: UserInterface[] | null = [];
+
+  searchTerm: string = '';
 
 
   constructor(
@@ -22,6 +28,10 @@ export class UsersPageComponent implements OnInit {
   ngOnInit(): void {
     this.fetchUsersData();
     this.initializeListeners();
+  }
+
+  ngOnDestroy(): void {
+    this.usersDataSubscription$.unsubscribe();
   }
 
   // get Users
@@ -34,8 +44,28 @@ export class UsersPageComponent implements OnInit {
     // @ts-ignore
     this.isLoading$ = this.store.pipe(select(isLoadingUsersSelector));
     // @ts-ignore
+    this.error$ = this.store.pipe(select(isErrorUsersSelector));
 
-    this.usersData$ = this.store.pipe(select(usersDataSelector));
+    // this.usersData$ = this.store.pipe(select(usersDataSelector));
     // console.log('sdrfg', this.usersData$)
+
+    // @ts-ignore
+    this.usersDataSubscription$ = this.store.pipe(select(usersDataSelector)).subscribe((users) => {
+      this.usersData = users;
+    });
+    console.log('this.users', this.usersData);
+  }
+
+  onChangeSearchInput(searchTerm: string) {
+    console.log('searchTerm', searchTerm);
+    this.searchTerm = searchTerm;
+  }
+
+  filterUsers(users: UserInterface[] | null) {
+    if (!users?.length) {
+      return []
+    }
+
+    return users.filter((user) => user.login.toLowerCase().includes(this.searchTerm.toLowerCase()));
   }
 }
