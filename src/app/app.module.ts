@@ -11,6 +11,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
 import {SharedModule} from './shared/shared.module';
+import {UserProfileModule} from './userProfile/userProfile.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {SharedModule} from './shared/shared.module';
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
     EffectsModule.forRoot([]),
-    SharedModule
+    SharedModule,
+    UserProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]

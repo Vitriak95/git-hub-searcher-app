@@ -10,7 +10,7 @@ export class UsersService {
   constructor(private http: HttpClient) {
   }
 
-  fetchUsersData(): Observable<any> {
+  fetchUsersData(): Observable<UserInterface[]> {
     const url = `${environment.apiUrl}/users?per_page=100`;
     return this.http.get<UserInterface[]>(url).pipe(
       map((response: UserInterface[]) => {

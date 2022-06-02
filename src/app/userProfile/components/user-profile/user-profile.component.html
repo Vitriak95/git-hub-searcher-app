@@ -1,0 +1,19 @@
+<div class="container">
+  <div *ngIf="isLoading$ | async">Loading...</div>
+  <div *ngIf="isError$ | async" class="error">{{isError$ | async}}</div>
+  <div class="user-profile">
+    <div class="avatar">
+      <img [src]="userProfileData?.avatar_url" [alt]="userProfileData?.login" />
+    </div>
+    <div *ngIf="userProfileData">
+      <div class="detail-item"><strong>UserName:</strong> {{userProfileData?.login}}</div>
+      <div class="detail-item"><strong>Name:</strong> {{userProfileData?.name}}</div>
+      <div class="detail-item"><strong>Location:</strong> {{userProfileData?.location}}</div>
+      <div class="detail-item"><strong>JoinDate:</strong> {{userProfileData?.created_at ? utilsService.convertIsoStringToDate(userProfileData.created_at) : '-'}}</div>
+      <div class="detail-item"><strong>Followers:</strong> {{userProfileData?.followers}}</div>
+      <div class="detail-item"><strong>Following:</strong> {{userProfileData?.following}}</div>
+    </div>
+  </div>
+
+<!--  <Repositories />-->
+</div>
