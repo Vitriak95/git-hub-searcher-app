@@ -5,6 +5,7 @@
     <div class="avatar">
       <img [src]="userProfileData?.avatar_url" [alt]="userProfileData?.login" />
     </div>
+    
     <div *ngIf="userProfileData">
       <div class="detail-item"><strong>UserName:</strong> {{userProfileData?.login}}</div>
       <div class="detail-item"><strong>Name:</strong> {{userProfileData?.name}}</div>
